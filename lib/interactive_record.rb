@@ -54,7 +54,7 @@ def self.find_by_name(name)
 end
 
 def self.find_by(attribute)
-  attribute.map {|name, id| DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{name} = #{id}")}
+  attribute.map {|name, id| DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{name} = #{id}")}.join(", ")
 end
 
 
