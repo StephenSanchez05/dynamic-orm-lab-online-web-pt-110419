@@ -56,7 +56,7 @@ end
 def self.find_by(attribute)
   v = attribute.values.first
   k = v.class == Fixnum ? v : "'#{v}'"
-  sql = "Select * From #{self.table_name} WHERE #{attribute} = #{k}"
+  sql = "Select * From #{self.table_name} WHERE #{attribute.keys.first} = #{k}"
   DB[:conn].execute(sql)
 end
 
