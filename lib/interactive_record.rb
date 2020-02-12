@@ -54,7 +54,10 @@ def self.find_by_name(name)
 end
 
 def self.find_by(attribute)
-  attribute.map {|name, id| DB[:conn].execute("SELECT * FROM #{self.table_name} WHERE #{name} = #{id}")}
+  v = attribute.values.first
+  k = value.class == Fixnum? value : "'#{value}'"
+  sql = "Select * From #{self.table_name} WHERE #{attribute} = #{k}"
+  DB[:conn].execute(sql)
 end
 
 
